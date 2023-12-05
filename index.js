@@ -37,14 +37,14 @@ let redeemed =
 "A hug from me to you",
 "Tomato Soup in honor of soup season", 
 "Baroness drink! (Peach green tea, large, 100% sugar, 100% ice)", 
-`Chocolate! Specifically, ${localStorage.getItem("Day 9")}`, 
+"You favorite chocolate!" , 
 "Noot noot kiss!", 
 "A snackie of your choice!", 
 "A drink of your choice!", 
 "Another cuddle!", 
 "A piece of dessert of your choice!",
 "A huge thumbs up from me!", 
-`A movie of your choice, specifically, ${localStorage.getItem("Day 9")}`,
+"A movie of your choice, yes even Pearl",
 "You favorite thing, stickers!", 
 "Forever claps from me!", 
 "My amazing voice singing you a Mariah song",
@@ -62,19 +62,27 @@ $('.box').click(function(event){
 
     if (day+1 > Number(today)) {
         alert("Stop peaking! No looking ahead!");
+        
     } else {
         alert(`${advent[day]}`);
+        localStorage.setItem(`Day ${day}`, redeemed[day]);
     }
 });
 
-// $(".items").click(function(event){
-//     giftItem.style.display = "block";
-// });
+$(".items").click(function(event){
+    giftItem.style.display = "block";
+});
 
-// $("#close-x").click(function(event){
-//     giftItem.style.display = "none";
-//   });
+$("#close-x").click(function(event){
+    giftItem.style.display = "none";
+  });
   
-//   $("#close-b").click(function(event){
-//     giftItem.style.display = "none";
-//   });
+  $("#close-b").click(function(event){
+    giftItem.style.display = "none";
+  });
+
+for (let i = 0; i < today-1; i++) {
+    let item = $("<li></li>").text(`${redeemed[i]}`);
+    item.addClass("list-group-item");
+    $(".list-group").append(item);
+}
